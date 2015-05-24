@@ -1,9 +1,9 @@
-package at.stefl.irmote.java.protocol;
+package at.stefl.irclient.java.protocol;
 
-import at.stefl.irmote.java.MarginOfError;
-import at.stefl.irmote.java.frame.RawFrame;
+import at.stefl.irclient.java.MarginOfError;
+import at.stefl.irclient.java.frame.RawFrame;
 
-public class RawProtocol extends IrProtocol<RawFrame> {
+public class RawProtocol extends Protocol<RawFrame> {
 
 	public static final String NAME = "RAW";
 	public static final RawProtocol INSTANCE = new RawProtocol();

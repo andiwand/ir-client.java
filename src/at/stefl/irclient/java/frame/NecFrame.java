@@ -1,8 +1,8 @@
-package at.stefl.irmote.java.frame;
+package at.stefl.irclient.java.frame;
 
-import at.stefl.irmote.java.protocol.NecProtocol;
+import at.stefl.irclient.java.protocol.NecProtocol;
 
-public class NecFrame extends IrFrame {
+public class NecFrame extends Frame {
 
 	private int data;
 

@@ -1,13 +1,13 @@
-package at.stefl.irmote.java;
+package at.stefl.irclient.java;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-import at.stefl.irmote.java.frame.IrFrame;
-import at.stefl.irmote.java.frame.RawFrame;
-import at.stefl.irmote.java.protocol.IrProtocol;
+import at.stefl.irclient.java.frame.Frame;
+import at.stefl.irclient.java.frame.RawFrame;
+import at.stefl.irclient.java.protocol.Protocol;
 
 public class Remote {
 
@@ -48,7 +48,8 @@ public class Remote {
 	}
 
 	private void stop() throws IOException {
-		socket.close();
+		if (socket != null)
+			socket.close();
 	}
 
 	private void sendHead(int type, int length) throws IOException {
@@ -91,8 +92,8 @@ public class Remote {
 		}
 	}
 
-	public void send(IrFrame frame) throws IOException {
-		RawFrame raw = IrProtocol.encodeRaw(frame);
+	public void send(Frame frame) throws IOException {
+		RawFrame raw = Protocol.encodeRaw(frame);
 		sendRaw(raw);
 	}
 
@@ -121,9 +122,9 @@ public class Remote {
 		}
 	}
 
-	public IrFrame receive() throws IOException {
+	public Frame receive() throws IOException {
 		RawFrame raw = receiveRaw();
-		return IrProtocol.decodeRaw(raw, MOE);
+		return Protocol.decodeRaw(raw, MOE);
 	}
 
 	public void configure(String name, String ssid, String password)

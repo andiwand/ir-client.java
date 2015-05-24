@@ -1,4 +1,4 @@
-package at.stefl.irmote.java;
+package at.stefl.irclient.java;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;

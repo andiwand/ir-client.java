@@ -1,10 +1,10 @@
-package at.stefl.irmote.java.protocol;
+package at.stefl.irclient.java.protocol;
 
-import at.stefl.irmote.java.MarginOfError;
-import at.stefl.irmote.java.frame.NecFrame;
-import at.stefl.irmote.java.frame.RawFrame;
+import at.stefl.irclient.java.MarginOfError;
+import at.stefl.irclient.java.frame.NecFrame;
+import at.stefl.irclient.java.frame.RawFrame;
 
-public class NecProtocol extends IrProtocol<NecFrame> {
+public class NecProtocol extends Protocol<NecFrame> {
 
 	public static final String NAME = "NEC";
 	public static final NecProtocol INSTANCE = new NecProtocol();

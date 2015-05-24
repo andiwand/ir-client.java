@@ -1,4 +1,4 @@
-package at.stefl.irmote.java;
+package at.stefl.irclient.java;
 
 public class Constant {
 

@@ -1,21 +1,16 @@
-package at.stefl.irmote.java.frame;
+package at.stefl.irclient.java.frame;
 
 import java.util.Arrays;
 
-import at.stefl.irmote.java.protocol.RawProtocol;
+import at.stefl.irclient.java.protocol.RawProtocol;
 
-public class RawFrame extends IrFrame {
+public class RawFrame extends Frame {
 
 	public double frequency;
 	public double[] times;
 
 	public RawFrame() {
 		super(RawProtocol.INSTANCE);
-	}
-
-	@Override
-	public String toString() {
-		return super.toString() + " " + frequency + " Hz";
 	}
 
 	@Override

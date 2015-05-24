@@ -1,4 +1,4 @@
-package at.stefl.irmote.java.tool;
+package at.stefl.irclient.java.tool;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -27,10 +27,10 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.AbstractTableModel;
 
-import at.stefl.irmote.java.Discovery;
-import at.stefl.irmote.java.Remote;
-import at.stefl.irmote.java.Station;
-import at.stefl.irmote.java.frame.IrFrame;
+import at.stefl.irclient.java.Discovery;
+import at.stefl.irclient.java.Remote;
+import at.stefl.irclient.java.Station;
+import at.stefl.irclient.java.frame.Frame;
 
 public class IrTool extends JFrame {
 
@@ -125,7 +125,7 @@ public class IrTool extends JFrame {
 
 		private class Entry {
 			String name;
-			IrFrame frame;
+			Frame frame;
 		}
 
 		private final String[] NAMES = new String[] { "Name", "Protocol",
@@ -155,7 +155,7 @@ public class IrTool extends JFrame {
 			return entries.size();
 		}
 
-		public synchronized IrFrame getFrame(int rowIndex) {
+		public synchronized Frame getFrame(int rowIndex) {
 			return entries.get(rowIndex).frame;
 		}
 
@@ -187,7 +187,7 @@ public class IrTool extends JFrame {
 			entry.name = (String) aValue;
 		}
 
-		public synchronized void addEntry(String name, IrFrame frame) {
+		public synchronized void addEntry(String name, Frame frame) {
 			Entry e = new Entry();
 			e.name = name;
 			e.frame = frame;
@@ -207,7 +207,7 @@ public class IrTool extends JFrame {
 		public void run() {
 			try {
 				setStation();
-				IrFrame frame = remote.receive();
+				Frame frame = remote.receive();
 				frameModel.addEntry("", frame);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -228,7 +228,7 @@ public class IrTool extends JFrame {
 		public void run() {
 			try {
 				setStation();
-				IrFrame frame = getFrame();
+				Frame frame = getFrame();
 				if (frame == null)
 					return;
 				remote.send(frame);
@@ -423,7 +423,7 @@ public class IrTool extends JFrame {
 		remote.setStation(host, port);
 	}
 
-	private IrFrame getFrame() {
+	private Frame getFrame() {
 		int selectedRow = frameTable.getSelectedRow();
 		if (selectedRow < 0)
 			return null;
